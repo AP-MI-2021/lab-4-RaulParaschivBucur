@@ -185,7 +185,7 @@ def main():
         elif optiune == 4:
             lst_concat = lista_cu_concatenari(lst1, lst2)
             print('elem palindroame din concatenare sunt', af_palindroame(lst_concat))
-            pass
+
         elif optiune == 5:
             print('Lista 3:')
             lst3 = read_list()

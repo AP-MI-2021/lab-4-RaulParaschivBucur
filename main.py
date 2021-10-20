@@ -62,12 +62,12 @@ def lista_cu_concatenari(lst1, lst2):
     """
     result_lst = []
     if len(lst1) >= len(lst2):
-        len_min = len(lst2)
-    else:
-        len_min = len(lst1)
-
-    for idx in range(0, len_min):
-        result_lst.append(str(lst1[idx]) + str(lst2[idx]))
+        for idx in range(0, len(lst2)):
+            result_lst.append(str(lst1[idx]) + str(lst2[idx]))
+    elif len(lst1) < len(lst2):
+        for idx in range(0, len(lst1)):
+            result_lst.append(str(lst1[idx]) + str(lst2[idx]))
+    return result_lst
 
 
 def test_lista_cu_concatenari():
@@ -97,7 +97,6 @@ def test_af_palindroame():
     assert af_palindroame([]) == []
 
 
-
 def main():
     lst1 = []
     lst2 = []
@@ -118,28 +117,29 @@ def main():
             print('Lista 2:')
             lst2 = read_list()
 
-        if optiune == 2:
+        elif optiune == 2:
             if cate_nr_pare(lst1) == cate_nr_pare(lst2):
                 print('Au acelasi nr de elem pare')
             else:
                 print('NU au acelasi nr de elemente pare')
 
-        if optiune == 3:
+        elif optiune == 3:
             print('Intersectia celor doua liste este: ', intersectie_liste(lst1,lst2))
 
-        if optiune == 4:
-            #lst_concat = lista_cu_concatenari(lst1, lst2)
-            #print('elem palindroame din concatenare sunt', af_palindroame(lst_concat))
+        elif optiune == 4:
+            lst_concat = lista_cu_concatenari(lst1, lst2)
+            print('elem palindroame din concatenare sunt', af_palindroame(lst_concat))
             pass
-        if optiune == 5:
+        elif optiune == 5:
             pass
 
-        if optiune == 6:
+        elif optiune == 6:
             break
 
 
-#test_lista_cu_concatenari()
+test_lista_cu_concatenari()
 test_af_palindroame()
 test_intersectie_liste()
 test_cate_nr_pare()
 main()
+

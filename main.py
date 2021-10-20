@@ -86,7 +86,6 @@ def test_este_palindrom():
     assert este_palindrom('1212') is False
 
 
-
 def af_palindroame(lst):
     """
     Returneaza lista formata din palindroamele prezente in lista lst
@@ -103,6 +102,49 @@ def test_af_palindroame():
     assert af_palindroame([]) == []
 
 
+# 5
+
+
+def oglindit(s):
+    """
+    Returneaza oglinditul unui string
+    """
+    return s[::-1]
+
+
+def test_oglindit():
+    assert oglindit('12') == '21'
+    assert oglindit('123') == '321'
+
+
+def divizibil_cu_tot(nr, lst):
+    """
+    Verifica daca un nr e div cu toate elem din o lista
+    """
+    for element in lst:
+        if nr % element != 0:
+            return False
+    return True
+
+
+def cerinta_5(lst, lst3):
+    """
+    Inlocuieste fiecare element din lst divizibil cu toate elem din lst3 cu oglinditul sau, altfel raman la fel
+    """
+    result_lst = []
+
+    for elem in lst:
+        if divizibil_cu_tot(elem, lst3):
+            result_lst.append(int(oglindit(str(elem))))
+        else:
+            result_lst.append(elem)
+    return result_lst
+
+
+def test_cerinta_5():
+    assert cerinta_5([12, 22, 36, 363], [1, 2, 3, 4]) == [21, 22, 63, 363]
+
+
 def main():
     lst1 = []
     lst2 = []
@@ -115,7 +157,8 @@ def main():
               'cele doua liste')
         print('5. Citiți o a treia listă și afișați listele obținute prin înlocuirea în cele două liste citite la'
               ' punctul 1 a tuturor elementelor cu oglinditul lor dacă îndeplinesc următoarea regulă: elementele sunt'
-              ' divizibile cu toate elementele din a treia lista. Dacă nu îndeplinesc regula, păstrați elementul așa cum e.')
+              ' divizibile cu toate elementele din a treia lista. Dacă nu îndeplinesc regula, păstrați elementul așa '
+              'cum e.')
         print('6. Iesi')
         optiune = int(input('Alege o optiune: '))
 
@@ -132,23 +175,26 @@ def main():
                 print('NU au acelasi nr de elemente pare')
 
         elif optiune == 3:
-            print('Intersectia celor doua liste este: ', intersectie_liste(lst1,lst2))
+            print('Intersectia celor doua liste este: ', intersectie_liste(lst1, lst2))
 
         elif optiune == 4:
             lst_concat = lista_cu_concatenari(lst1, lst2)
             print('elem palindroame din concatenare sunt', af_palindroame(lst_concat))
             pass
         elif optiune == 5:
-            pass
+            print('Lista 3:')
+            lst3 = read_list()
+            print('Listele rezultate sunt: ', cerinta_5(lst1, lst3), ' si ', cerinta_5(lst2, lst3))
 
         elif optiune == 6:
             break
 
 
+test_cerinta_5()
+test_oglindit()
 test_este_palindrom()
 test_lista_cu_concatenari()
 test_af_palindroame()
 test_intersectie_liste()
 test_cate_nr_pare()
 main()
-

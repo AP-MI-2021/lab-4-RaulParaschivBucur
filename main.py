@@ -81,6 +81,12 @@ def este_palindrom(s):
     return s == s[::-1]
 
 
+def test_este_palindrom():
+    assert este_palindrom('121') is True
+    assert este_palindrom('1212') is False
+
+
+
 def af_palindroame(lst):
     """
     Returneaza lista formata din palindroamele prezente in lista lst
@@ -107,7 +113,9 @@ def main():
         print('3. Af o listă reprezentând intersecția listelor citite de la tastatură')
         print('4. Af toate palindroamele obținute prin concatenarea elementelor de pe aceleași poziții în'
               'cele doua liste')
-        print('5.')
+        print('5. Citiți o a treia listă și afișați listele obținute prin înlocuirea în cele două liste citite la'
+              ' punctul 1 a tuturor elementelor cu oglinditul lor dacă îndeplinesc următoarea regulă: elementele sunt'
+              ' divizibile cu toate elementele din a treia lista. Dacă nu îndeplinesc regula, păstrați elementul așa cum e.')
         print('6. Iesi')
         optiune = int(input('Alege o optiune: '))
 
@@ -137,6 +145,7 @@ def main():
             break
 
 
+test_este_palindrom()
 test_lista_cu_concatenari()
 test_af_palindroame()
 test_intersectie_liste()

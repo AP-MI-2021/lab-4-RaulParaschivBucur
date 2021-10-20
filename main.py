@@ -127,6 +127,11 @@ def divizibil_cu_tot(nr, lst):
     return True
 
 
+def test_divizibil_cu_tot():
+    assert divizibil_cu_tot(12, [1, 2, 3, 4]) is True
+    assert divizibil_cu_tot(31, [1, 2, 3, 4]) is False
+
+
 def cerinta_5(lst, lst3):
     """
     Inlocuieste fiecare element din lst divizibil cu toate elem din lst3 cu oglinditul sau, altfel raman la fel
@@ -190,6 +195,7 @@ def main():
             break
 
 
+test_divizibil_cu_tot()
 test_cerinta_5()
 test_oglindit()
 test_este_palindrom()
